@@ -1,0 +1,20 @@
+Package: CompositeReliability
+Title: Determine the Composite Reliability of a naturalistic, unbalanced dataset 
+Version: 0.0.0.9000
+Authors@R: 
+    person("Joyce", "Moonen - van Loon", , "j.moonen@maastrichtuniversity.nl", role = c("aut", "cre"),
+           comment = c(ORCID = "Y0000-0002-8883-8822"))
+Description: The reliability of assessment tools is a crucial aspect of monitoring student performance in various educational settings. It ensures that the assessment outcomes accurately reflect a student's true level of performance. However, when assessments are combined, determining composite reliability can be challenging, especially for naturalistic and unbalanced datasets. This package provides an easy-to-use solution for calculating composite reliability for different assessment types. It allows for the inclusion of weight per assessment type and produces extensive G- and D-study results with graphical interpretations. Overall, our approach enhances the reliability of composite assessments, making it suitable for various education contexts.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    dplyr,
+    ggplot2,
+    lme4,
+    magrittr,
+    plyr,
+    psych,
+    reshape2,
+    tidyr
