@@ -2,8 +2,8 @@
 #' Both the reliability coefficient and the SEM are presented in graphs for differing numbers of assessments,
 #' given insight in the impact on the reliability if more or less assessments per type were required or advised.
 #'
-#' @param mydata A dataset containing columns ID (int), Type (enum), Score (float)
-#' @param maxNrAssessments The maximum number of assessments per type on with the D study is executed
+#' @param mydata A dataframe containing columns ID, Type, Score (numeric)
+#' @param maxNrAssessments The maximum (Int) number of assessments per type on with the D study is executed
 #'
 #' @return A list containing 2 plots: reliability (plotRel) and Standard Error of Measurement SEM (plotSEM)
 #' @export
@@ -11,9 +11,8 @@
 #' @examples
 #' plots <- DStudy(mydata, maxNrAssessments = 10)
 
-
-
 DStudy <- function(mydata, maxNrAssessments = 60){
+  checkDatasets(mydata)
   nr = value = variable = Type = NULL
 
   types <- sort(unique(mydata$Type))

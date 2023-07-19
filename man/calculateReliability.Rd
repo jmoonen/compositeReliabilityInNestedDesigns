@@ -7,7 +7,7 @@
 calculateReliability(mydata, n)
 }
 \arguments{
-\item{mydata}{A dataset containing columns ID (int), Type (enum), Score (float)}
+\item{mydata}{A dataframe containing columns ID, Type, Score (numeric)}
 
 \item{n}{A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.}
 }

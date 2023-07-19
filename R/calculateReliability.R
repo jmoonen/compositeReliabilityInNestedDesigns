@@ -1,6 +1,6 @@
 #' calculateReliability: determine the reliability and SEM per Type
 #'
-#' @param mydata A dataset containing columns ID (int), Type (enum), Score (float)
+#' @param mydata A dataframe containing columns ID, Type, Score (numeric)
 #' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
 #'
 #' @return A list containing 2 vectors; one vector with the reliability coefficient of each Type, the other vector with the SEM values for each Type
@@ -10,6 +10,7 @@
 #' rel <- calculateReliability(mydata, n=c("A"=3,"B"=3,C="2"))
 
 calculateReliability <- function(mydata, n) {
+  checkDatasets(mydata, n)
   varCovMatrix <- calculateVarCov(mydata, n)
   types <- sort(unique(mydata$Type))
 

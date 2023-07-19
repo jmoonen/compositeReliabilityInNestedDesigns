@@ -7,7 +7,7 @@
 GStudyPerType(dataPerAssessmentType)
 }
 \arguments{
-\item{dataPerAssessmentType}{A dataset containing columns ID (int), Type (enum), Score (float), with only one value in column Type}
+\item{dataPerAssessmentType}{A dataframe containing columns ID, Type, Score (numeric), with only one value in column Type}
 }
 \value{
 A matrix presenting the observerd varianced and residual, number of ID's and the percentage of the total variance for each group

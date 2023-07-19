@@ -1,21 +1,22 @@
 #' computeCompositeReliability: multivariate generalizability theory approach to estimate the composite reliability of student performance across different types of assessments.
 #'
-#' @param mydata A dataset containing columns ID (int), Type (enum), Score (float)
+#' @param mydata A dataframe containing columns ID, Type, Score (numeric)
 #' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
 #' @param weights A vector containing for each Type the weight assigned to it. The sum of weights should be equal to 1.
 #' @param optimizeSEM Boolean, if TRUE, the weights are adjusted in order to minimize the Standard Error of Measurement (SEM)
 #'
-#' @return A list containing the composite reliabilty coefficient, the SEM and the distribution of weights. If 'optimizeSEM' is set to TRUE, the vector of weights minimizes the SEM.
+#' @return A list containing the composite reliability coefficient, the SEM and the distribution of weights. If 'optimizeSEM' is set to TRUE, the vector of weights minimizes the SEM.
 #' @export
 #'
 #' @examples
 #' compRel <- computeCompositeReliability(mydata, n=c("A"=10, "B"=5, "C"=2),
-#'                             w=c("A"=1/3,"B"=1/3, "C"=1/3), optimizeSEM=TRUE)
+#'                             weights=c("A"=1/3,"B"=1/3, "C"=1/3), optimizeSEM=TRUE)
 #' compRel$reliability
 #' compRel$SEM
 #' compRel$weights
 
 computeCompositeReliability <- function(mydata, n, weights, optimizeSEM) {
+  checkDatasets(mydata, n, weights)
   varCovMatrix <- calculateVarCov(mydata, n)
 
   types <- sort(unique(mydata$Type))
@@ -25,9 +26,6 @@ computeCompositeReliability <- function(mydata, n, weights, optimizeSEM) {
       for(t in 2:length(types)) {
         weights[types[t]] = weights[types[1]] * varCovMatrix$S_delta[types[1],types[1]]/varCovMatrix$S_delta[types[t],types[t]]
       }
-  } else {
-    # assert that the sum of weights equals 1
-    stopifnot(sum(weights)==1)
   }
 
   weightMatrix <- weights %*% t(weights)

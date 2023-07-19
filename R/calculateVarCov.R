@@ -1,7 +1,7 @@
 #' calculateVarCov: Estimate variance and covariance components of assessee p S_p and mean assessment scores i nested in assessees S_iINp,
 #' and determine the error scores S_delta
 #'
-#' @param mydata A dataset containing columns ID (int), Type (enum), Score (float)
+#' @param mydata A dataframe containing columns ID, Type, Score (numeric)
 #' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
 #'
 #' @return A list containing the observed variances, covariances and errors scores
@@ -14,6 +14,9 @@
 #' varcov$S_delta
 
 calculateVarCov <- function(mydata, n){
+  # Check that the input data is valid
+  checkDatasets(mydata, n, NULL)
+
   ID = Type = Score = NULL
 
   types <- sort(unique(mydata$Type))

@@ -7,7 +7,7 @@
 computeCompositeReliability(mydata, n, weights, optimizeSEM)
 }
 \arguments{
-\item{mydata}{A dataset containing columns ID (int), Type (enum), Score (float)}
+\item{mydata}{A dataframe containing columns ID, Type, Score (numeric)}
 
 \item{n}{A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.}
 
@@ -16,14 +16,14 @@ computeCompositeReliability(mydata, n, weights, optimizeSEM)
 \item{optimizeSEM}{Boolean, if TRUE, the weights are adjusted in order to minimize the Standard Error of Measurement (SEM)}
 }
 \value{
-A list containing the composite reliabilty coefficient, the SEM and the distribution of weights. If 'optimizeSEM' is set to TRUE, the vector of weights minimizes the SEM.
+A list containing the composite reliability coefficient, the SEM and the distribution of weights. If 'optimizeSEM' is set to TRUE, the vector of weights minimizes the SEM.
 }
 \description{
 computeCompositeReliability: multivariate generalizability theory approach to estimate the composite reliability of student performance across different types of assessments.
 }
 \examples{
 compRel <- computeCompositeReliability(mydata, n=c("A"=10, "B"=5, "C"=2),
-                            w=c("A"=1/3,"B"=1/3, "C"=1/3), optimizeSEM=TRUE)
+                            weights=c("A"=1/3,"B"=1/3, "C"=1/3), optimizeSEM=TRUE)
 compRel$reliability
 compRel$SEM
 compRel$weights

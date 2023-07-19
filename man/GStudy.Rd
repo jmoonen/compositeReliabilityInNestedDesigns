@@ -3,26 +3,22 @@
 \name{GStudy}
 \alias{GStudy}
 \title{GStudy for a dataset in which every student p has a potentially differing number of scores i on each assessment type m.
-i.e. model i: (p x m)}
+i.e. model i: (p x m). The output gives descriptive statistics, reliability coefficient and SEM for each assessment type.}
 \usage{
-GStudy(mydata, nrDigitsOutput = 4, optimizeSEM = TRUE)
+GStudy(mydata, nrDigitsOutput = 4)
 }
 \arguments{
-\item{mydata}{A dataset containing columns ID (int), Type (enum), Score (float)}
+\item{mydata}{A dataframe containing columns ID, Type, Score (numeric)}
 
 \item{nrDigitsOutput}{Integer, number of digits in the output}
-
-\item{optimizeSEM}{Boolean, if TRUE, the weights are adjusted in order to minimize the Standard Error of Measurement (SEM)}
 }
 \value{
-List containing a matrix with descriptive statistics (statisticMatrix) for each Type, and textual output (outputGstudy) of the composite reliabitiy
+Matrix with descriptive statistics for each Type of assessment
 }
 \description{
 GStudy for a dataset in which every student p has a potentially differing number of scores i on each assessment type m.
-i.e. model i: (p x m)
+i.e. model i: (p x m). The output gives descriptive statistics, reliability coefficient and SEM for each assessment type.
 }
 \examples{
-outputG <- GStudy(mydata,nrDigitsOutput=4,optimizeSEM=TRUE)
-outputG$statisticMatrix
-outputG$outputGstudy
+GStudy(mydata,nrDigitsOutput=4)
 }

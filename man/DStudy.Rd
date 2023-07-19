@@ -9,9 +9,9 @@ given insight in the impact on the reliability if more or less assessments per t
 DStudy(mydata, maxNrAssessments = 60)
 }
 \arguments{
-\item{mydata}{A dataset containing columns ID (int), Type (enum), Score (float)}
+\item{mydata}{A dataframe containing columns ID, Type, Score (numeric)}
 
-\item{maxNrAssessments}{The maximum number of assessments per type on with the D study is executed}
+\item{maxNrAssessments}{The maximum (Int) number of assessments per type on with the D study is executed}
 }
 \value{
 A list containing 2 plots: reliability (plotRel) and Standard Error of Measurement SEM (plotSEM)
