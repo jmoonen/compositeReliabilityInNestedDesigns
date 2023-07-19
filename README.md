@@ -8,17 +8,13 @@ library("CompositeReliability")
 ```
 
 ## G-Study
-The "GStudy" function, available in the "CompositeReliability" package, is designed to assess the reliability coefficient and the standard error of measurement (SEM) for each assessment type. This function utilizes the harmonic mean of the number of assessments per type as a measure of effective assessment quantity. By providing a dataset as input, users can obtain reliable estimates of the reliability coefficient and SEM for each assessment type.
-
-Moreover, the "GStudy" function offers additional flexibility by allowing users to define the desired number of decimal places in the output (nrDigitsOutput). Furthermore, users have the option to optimize the weights assigned to each assessment type, with the objective of minimizing the SEM. This optimization process contributes to enhancing the precision and accuracy of the assessment outcomes, leading to more robust and informative reliability estimates. NB: The dataset "mydata" is included in the package as example.
+The "GStudy" function, available in the "CompositeReliability" package, is designed to assess the reliability coefficient and the standard error of measurement (SEM) for each assessment type. This function utilizes the harmonic mean of the number of assessments per type as a measure of effective assessment quantity. By providing a dataset as input, users can obtain reliable estimates of the reliability coefficient and SEM for each assessment type. The desired number of decimal places in the output (nrDigitsOutput) can be added as input. NB: The dataset "mydata" is included in the package as example.
 
 ```R
-outputG <- GStudy(mydata,nrDigitsOutput=4,optimizeSEM=TRUE)
-outputG$statisticMatrix
-outputG$outputGstudy
+GStudy(mydata,nrDigitsOutput=4,optimizeSEM=TRUE)
 ```
 
-The second line of code presents a table with descriptive statistics for each Type included in the dataset. The third line presents the composite reliability output, first based on the harmonic mean, second on the average number of assessments per Type, and third on the harmonic mean with weights set to minimize SEM.
+The output presents a table with descriptive statistics for each Type included in the dataset.
 
 To view the observed variances, covariances, and error scores, the dataset, along with a vector specifying the number of assessments per assessment type, can be added as input.
 
