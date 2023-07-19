@@ -1,6 +1,6 @@
 Package: CompositeReliability
 Title: Determine the Composite Reliability of a Naturalistic, Unbalanced Dataset
-Version: 1.0.1.9000
+Version: 1.0.1.9001
 Authors@R: 
     person("Joyce", "Moonen - van Loon", , "j.moonen@maastrichtuniversity.nl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8883-8822"))
@@ -23,3 +23,4 @@ Depends:
 LazyData: true
 URL: https://github.com/jmoonen/CompositeReliability
 BugReports: https://github.com/jmoonen/CompositeReliability/issues
+

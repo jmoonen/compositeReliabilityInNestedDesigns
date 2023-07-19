@@ -1,5 +1,5 @@
-#' DStudy: the program presents the reliability and the SEM for different numbers of assessments per type.
-#' Both the reliability and the SEM are presented in graphs for differing numbers of assessments,
+#' DStudy: the program presents the reliability coefficient and the SEM for different numbers of assessments per type.
+#' Both the reliability coefficient and the SEM are presented in graphs for differing numbers of assessments,
 #' given insight in the impact on the reliability if more or less assessments per type were required or advised.
 #'
 #' @param mydata A dataset containing columns ID (int), Type (enum), Score (float)
@@ -9,12 +9,11 @@
 #' @export
 #'
 #' @examples
-#' plots <- DStudy(mydata, 60)
-#' plots$plotRel
-#' plots$plotSEM
+#' plots <- DStudy(mydata, maxNrAssessments = 10)
+
 
 DStudy <- function(mydata, maxNrAssessments = 60){
-  nr = value = variable = NULL
+  nr = value = variable = Type = NULL
 
   types <- sort(unique(mydata$Type))
 
@@ -26,7 +25,7 @@ DStudy <- function(mydata, maxNrAssessments = 60){
     names(n) = types
 
     #source("includes/CalculateReliability.R", print.eval = TRUE)
-    outputRel <- calculateReliability(types, mydata, n) #calculateReliability(types,varCovMatrix,n,w,optimizeSEM,FALSE)
+    outputRel <- calculateReliability(mydata, n)
 
     Dstudy_E_rho2[i,] = outputRel$E_rho2_vector
     Dstudy_SEM[i,] = outputRel$SEM_vector
@@ -36,7 +35,7 @@ DStudy <- function(mydata, maxNrAssessments = 60){
   D$nr <- c(1:maxNrAssessments)
 
   df <- reshape2::melt(D,  id.vars = "nr", measure.vars = types)
-  # plot reliabilities on same grid, each series colored differently
+  # plot reliabilitie coefficient on same grid, each series colored differently
   plotRel <- ggplot2::ggplot(df, ggplot2::aes(nr,value)) + ggplot2::geom_line(ggplot2::aes(colour = variable)) + ggplot2::scale_x_continuous(breaks=seq(0,maxNrAssessments,5)) + ggplot2::scale_y_continuous(breaks=seq(0,1,0.1)) + ggplot2::geom_hline(yintercept=0.8, linetype="dashed", color = "black")
 
   S <- as.data.frame(Dstudy_SEM)

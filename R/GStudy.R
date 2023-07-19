@@ -6,10 +6,10 @@
 #' @param optimizeSEM  Boolean, if TRUE, the weights are adjusted in order to minimize the Standard Error of Measurement (SEM)
 #'
 #' @return List containing a matrix with descriptive statistics (statisticMatrix) for each Type, and textual output (outputGstudy) of the composite reliabitiy
-#' #' @export
+#' @export
 #'
 #' @examples
-#' outputG <- GStudy(mydata,4,TRUE)
+#' outputG <- GStudy(mydata,nrDigitsOutput=4,optimizeSEM=TRUE)
 #' outputG$statisticMatrix
 #' outputG$outputGstudy
 
@@ -37,15 +37,10 @@ GStudy <- function(mydata, nrDigitsOutput=4, optimizeSEM=TRUE){
     statisticMatrix["MaxNrAssessments",aType] = max(nrAssessmentsPerID[,aType])
     statisticMatrix["MinNrAssessments",aType] = min(nrAssessmentsPerID[,aType])
     statisticMatrix["MedianNrAssessments",aType] = stats::median(nrAssessmentsPerID[,aType])
-
-    #res <- GstudyPerType(dataPerType)
-    #S_p[aType,aType] = res[c("ID"),]$vcov
-    #S_iINp[aType,aType] = res[c("Residual"),]$vcov
   }
 
   n <- statisticMatrix["HarmonicMean",]
-  #source("includes/CalculateReliability.R", print.eval = TRUE)
-  reliability <- calculateReliability(types, mydata, n)
+  reliability <- calculateReliability(mydata, n)
 
   statisticMatrix["ReliabilityCoeff_HM",] = reliability$E_rho2_vector[,"value"]
   statisticMatrix["SEM_HM",] = reliability$SEM_vector[,"value"]

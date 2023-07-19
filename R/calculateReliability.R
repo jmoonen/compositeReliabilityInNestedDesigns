@@ -1,19 +1,26 @@
-calculateReliability <- function(types, mydata, n) {
-  optSemCompRel=NULL
+#' calculateReliability: determine the reliability and SEM per Type
+#'
+#' @param mydata A dataset containing columns ID (int), Type (enum), Score (float)
+#' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
+#'
+#' @return A list containing 2 vectors; one vector with the reliability coefficient of each Type, the other vector with the SEM values for each Type
+#' @export
+#'
+#' @examples
+#' rel <- calculateReliability(mydata, n=c("A"=3,"B"=3,C="2"))
+
+calculateReliability <- function(mydata, n) {
   varCovMatrix <- calculateVarCov(mydata, n)
+  types <- sort(unique(mydata$Type))
 
   # initialize variables
-  #UniverseScore_vector <- matrix(0, nrow=length(types), ncol=1, dimnames=list(types, "value"))
-  #ErrorScore_vector <- matrix(0, nrow=length(types), ncol=1, dimnames=list(types, "value"))
   E_rho2_vector <- matrix(0, nrow=length(types), ncol=1, dimnames=list(types, "value"))
   SEM_vector <- matrix(0, nrow=length(types), ncol=1, dimnames=list(types, "value"))
 
   # determine the reliability and SEM per Type
   for(aType in types) {
-    #UniverseScore_vector[aType, "value"] <- S_p[aType,aType]
-    #ErrorScore_vector[aType, "value"] <- S_Delta[aType,aType]
-    E_rho2_vector[aType, "value"] <- varCovMatrix$S_p[aType,aType]/(varCovMatrix$S_p[aType,aType] + varCovMatrix$S_Delta[aType,aType])
-    SEM_vector[aType, "value"] <- sqrt(varCovMatrix$S_Delta[aType,aType])
+    E_rho2_vector[aType, "value"] <- varCovMatrix$S_p[aType,aType]/(varCovMatrix$S_p[aType,aType] + varCovMatrix$S_delta[aType,aType])
+    SEM_vector[aType, "value"] <- sqrt(varCovMatrix$S_delta[aType,aType])
   }
 
   return(list("E_rho2_vector"=E_rho2_vector,"SEM_vector"=SEM_vector))

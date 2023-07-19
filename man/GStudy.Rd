@@ -2,7 +2,8 @@
 % Please edit documentation in R/GStudy.R
 \name{GStudy}
 \alias{GStudy}
-\title{GStudy}
+\title{GStudy for a dataset in which every student p has a potentially differing number of scores i on each assessment type m.
+i.e. model i: (p x m)}
 \usage{
 GStudy(mydata, nrDigitsOutput = 4, optimizeSEM = TRUE)
 }
@@ -14,14 +15,14 @@ GStudy(mydata, nrDigitsOutput = 4, optimizeSEM = TRUE)
 \item{optimizeSEM}{Boolean, if TRUE, the weights are adjusted in order to minimize the Standard Error of Measurement (SEM)}
 }
 \value{
-List containing a matrix with descriptive statistics (statisticMatrix) and textual output (outputGstudy) of the composite reliabitiy
-#' @export
+List containing a matrix with descriptive statistics (statisticMatrix) for each Type, and textual output (outputGstudy) of the composite reliabitiy
 }
 \description{
-GStudy
+GStudy for a dataset in which every student p has a potentially differing number of scores i on each assessment type m.
+i.e. model i: (p x m)
 }
 \examples{
-outputG <- GStudy(mydata,4,TRUE)
+outputG <- GStudy(mydata,nrDigitsOutput=4,optimizeSEM=TRUE)
 outputG$statisticMatrix
 outputG$outputGstudy
 }
