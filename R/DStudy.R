@@ -12,6 +12,7 @@
 #' plots <- DStudy(mydata, maxNrAssessments = 10)
 
 
+
 DStudy <- function(mydata, maxNrAssessments = 60){
   nr = value = variable = Type = NULL
 
