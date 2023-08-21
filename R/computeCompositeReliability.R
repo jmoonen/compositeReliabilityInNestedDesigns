@@ -1,7 +1,7 @@
 #' computeCompositeReliability: multivariate generalizability theory approach to estimate the composite reliability of student performance across different types of assessments.
 #'
 #' @param mydata A dataframe containing columns ID, Type, Score (numeric)
-#' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
+#' @param n A vector containing for each Type the number of scores or assessments, e.g. averages, requirements.
 #' @param weights A vector containing for each Type the weight assigned to it. The sum of weights should be equal to 1.
 #' @param optimizeSEM Boolean, if TRUE, the weights are adjusted in order to minimize the Standard Error of Measurement (SEM)
 #'

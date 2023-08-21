@@ -44,3 +44,12 @@ compRel$reliability
 compRel$SEM
 compRel$weights
 ```
+
+And it is possible to compute the maximum value of the composite reliability coefficient of the dataset, given the number of assessments per type.
+
+```R
+compMaxRel <- computeMaxCompositeReliability(mydata, n=c("A"=10, "B"=5, "C"=2))
+compMaxRel$reliability
+compMaxRel$SEM
+compMaxRel$weights
+```

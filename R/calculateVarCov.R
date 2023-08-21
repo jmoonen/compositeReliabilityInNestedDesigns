@@ -2,7 +2,7 @@
 #' and determine the error scores S_delta
 #'
 #' @param mydata A dataframe containing columns ID, Type, Score (numeric)
-#' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
+#' @param n A vector containing for each Type the number of scores or assessments, e.g. averages, requirements.
 #'
 #' @return A list containing the observed variances, covariances and errors scores
 #' @export

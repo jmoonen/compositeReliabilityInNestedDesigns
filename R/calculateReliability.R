@@ -1,7 +1,7 @@
 #' calculateReliability: determine the reliability and SEM per Type
 #'
 #' @param mydata A dataframe containing columns ID, Type, Score (numeric)
-#' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
+#' @param n A vector containing for each Type the number of scores or assessments, e.g. averages, requirements.
 #'
 #' @return A list containing 2 vectors; one vector with the reliability coefficient of each Type, the other vector with the SEM values for each Type
 #' @export

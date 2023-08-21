@@ -4,7 +4,7 @@
 #' and data set weights contains a numerical value for each "Type" and the sum of all values is equal to 1.
 #'
 #' @param mydata A dataframe containing columns ID, Type, Score (numeric)
-#' @param n A vector containing for each Type the number of score or assessments assessments, e.g. averages, requirements.
+#' @param n A vector containing for each Type the number of scores or assessments, e.g. averages, requirements.
 #' @param weights A vector containing for each Type the weight assigned to it. The sum of weights should be equal to 1.
 #'
 #' @return A list with the number of Assessments per ID per Type
@@ -54,7 +54,8 @@ checkDatasets <- function(mydata, n = NULL, weights = NULL){
       stopifnot(is.na(weights) == FALSE)
     }
     # The sum of values is equal to 1
-    stopifnot(sum(weights)==1)
+    epsilon = 0.0001
+    stopifnot(abs(sum(weights))-1<epsilon)
   }
 
   return(nrAssessmentsPerID)
