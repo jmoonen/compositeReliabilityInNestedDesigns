@@ -54,7 +54,8 @@ checkDatasets <- function(mydata, n = NULL, weights = NULL){
       stopifnot(is.na(weights) == FALSE)
     }
     # The sum of values is equal to 1
-    stopifnot(sum(weights)==1)
+    epsilon = 0.0001
+    stopifnot(abs(sum(weights))-1<epsilon)
   }
 
   return(nrAssessmentsPerID)
