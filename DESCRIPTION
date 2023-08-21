@@ -1,6 +1,6 @@
 Package: CompositeReliability
 Title: Determine the Composite Reliability of a Naturalistic, Unbalanced Dataset
-Version: 1.0.2.9000
+Version: 1.0.3.9000
 Authors@R: 
     person("Joyce", "Moonen - van Loon", , "j.moonen@maastrichtuniversity.nl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8883-8822"))
@@ -17,7 +17,8 @@ Imports:
     plyr,
     psych,
     reshape2,
-    tidyr
+    tidyr,
+    Rsolnp
 Depends: 
     R (>= 2.10)
 LazyData: true
