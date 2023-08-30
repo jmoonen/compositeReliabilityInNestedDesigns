@@ -1,7 +1,7 @@
 # CompositeReliability
 Determine the Composite Reliability of a Naturalistic, Unbalanced Dataset
 
-The reliability of assessment tools is a crucial aspect of monitoring student performance in various educational settings. It ensures that the assessment outcomes accurately reflect a student's true level of performance. However, when assessments are combined, determining composite reliability can be challenging, especially for naturalistic and unbalanced datasets. This package is designed to estimate composite reliability using multivariate generalizability theory and enhance the analysis of assessment data. The package allows for the inclusion of weight per assessment type and produces extensive G- and D-study results with graphical interpretations, and options to find the set of weights that minimize the standard error of measurement (SEM).
+The reliability of assessment tools is a crucial aspect of monitoring student performance in various educational settings. It ensures that the assessment outcomes accurately reflect a student's true level of performance. However, when assessments are combined, determining composite reliability can be challenging, especially for naturalistic and unbalanced datasets. This package is designed to estimate composite reliability using multivariate generalizability theory and enhance the analysis of assessment data. The package allows for the inclusion of weight per assessment type and produces extensive G- and D-study results with graphical interpretations, and options to find the set of weights that maximizes the composite reliability or minimizes the standard error of measurement (SEM).
 
 ```R
 library("CompositeReliability") 
@@ -11,7 +11,7 @@ library("CompositeReliability")
 The "GStudy" function, available in the "CompositeReliability" package, is designed to assess the reliability coefficient and the standard error of measurement (SEM) for each assessment type. This function utilizes the harmonic mean of the number of assessments per type as a measure of effective assessment quantity. By providing a dataset as input, users can obtain reliable estimates of the reliability coefficient and SEM for each assessment type. The desired number of decimal places in the output (nrDigitsOutput) can be added as input. NB: The dataset "mydata" is included in the package as example.
 
 ```R
-GStudy(mydata,nrDigitsOutput=4,optimizeSEM=TRUE)
+GStudy(mydata,nrDigitsOutput=4)
 ```
 
 The output presents a table with descriptive statistics for each Type included in the dataset.
@@ -53,3 +53,8 @@ compMaxRel$reliability
 compMaxRel$SEM
 compMaxRel$weights
 ```
+
+## Assumptions and Requirements
+Generalizability theory, as a fundamental framework, typically assumes local independence of occasions, implying that each data point is independent of others. However, this assumption may not hold in educational settings, where assessments can impact subsequent performances due to feedback provided to students. Despite this violation, such conditions are common in programmatic assessment settings. We accept this violation as the primary objective in such a setting is to differentiate between overall student performances over an extended time period.
+When combining different assessment types, each focusing on specific aspects in the education, to evaluate the performance of the student using multivariate generalizability theory, the students should be graded on the same rating scale using the same assessment standard throughout all assessments.
+The data set utilized in the package must adhere to specific criteria. It should be an R dataframe with three columns labeled "ID," "Type," and "Score". The "Score" column must contain numeric data. To estimate the composite reliability of multiple assessment types, each student must receive a grade for each assessment type at least once. When including the desired number of assessments per type, each type must be included and receive a numeric value. Furthermore, the sum of weights assigned to the assessment types must be equal to 1, ensuring a proper weighting scheme for the composite reliability calculation.
